@@ -3,4 +3,16 @@
   height: 100%;
   object-fit: cover;
   border-radius: 30px;
+}/* Download CV button */
+.btn {
+    background-color: #2563eb;   /* dark navy */
+    color: white;
+    border: none;
+}
+
+/* Contact button */
+.btn-outline {
+    background-color: #10b981;   /* gold */
+    color: black;
+    border: 2px solid #d4af37;
 }}
