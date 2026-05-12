@@ -118,7 +118,15 @@ a {
   color: #071b33 !important;
   border: 2px solid #d4af37 !important;
 }
+.btn-cv{
+  background:#2563eb !important;
+  color:white !important;
+}
 
+.btn-contact{
+  background:#d4af37 !important;
+  color:#071b33 !important;
+}
 .btn-danger {
   background: #c83535;
   color: #fff
