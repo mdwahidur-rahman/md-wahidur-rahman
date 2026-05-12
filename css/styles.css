@@ -119,13 +119,31 @@ a {
   border: 2px solid #d4af37 !important;
 }
 .btn-cv{
-  background:#2563eb !important;
-  color:white !important;
+  background: linear-gradient(135deg, #2563eb, #1e40af);
+  color: #ffffff !important;
+  border: none;
+  box-shadow: 0 8px 22px rgba(37, 99, 235, 0.35);
+  transition: all 0.3s ease;
+}
+
+.btn-cv:hover{
+  transform: translateY(-3px) scale(1.02);
+  box-shadow: 0 14px 30px rgba(37, 99, 235, 0.45);
+  background: linear-gradient(135deg, #3b82f6, #1d4ed8);
 }
 
 .btn-contact{
-  background:#d4af37 !important;
-  color:#071b33 !important;
+  background: linear-gradient(135deg, #d4af37, #f5df92);
+  color: #071b33 !important;
+  border: none;
+  box-shadow: 0 8px 22px rgba(212, 175, 55, 0.35);
+  transition: all 0.3s ease;
+}
+
+.btn-contact:hover{
+  transform: translateY(-3px) scale(1.02);
+  box-shadow: 0 14px 30px rgba(212, 175, 55, 0.45);
+  background: linear-gradient(135deg, #e6c55a, #f8e7a8);
 }
 .btn-danger {
   background: #c83535;
