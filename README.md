@@ -21,7 +21,7 @@ A GitHub-ready academic portfolio website built with pure HTML, CSS, and vanilla
 Click the lock icon in the top navigation bar and enter:
 
 ```text
-wahid2024
+w********
 ```
 
 When admin mode is active, Edit/Delete buttons will appear on publication, award, and experience cards.
