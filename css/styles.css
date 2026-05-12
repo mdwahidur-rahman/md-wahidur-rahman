@@ -98,7 +98,10 @@ a {
   transition: all var(--tr);
   font-family: inherit;
   font-size: .92rem;
-  white-space: nowrap
+  white-space: nowrap;
+  background-color: #0f172a;   /* dark navy */
+    color: white;
+    border: none;
 }
 
 .btn:hover {
