@@ -106,15 +106,17 @@ a {
   box-shadow: var(--soft)
 }
 
+/* Download CV Button */
 .btn-primary {
-  background: var(--gold);
-  color: #071b33
+  background: #2563eb !important;   /* Blue */
+  color: white !important;
 }
 
+/* Contact Button */
 .btn-outline {
-  border-color: var(--border);
-  color: var(--text);
-  background: rgba(255, 255, 255, .08)
+  background: #d4af37 !important;   /* Gold */
+  color: #071b33 !important;
+  border: 2px solid #d4af37 !important;
 }
 
 .btn-danger {
