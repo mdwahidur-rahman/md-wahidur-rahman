@@ -66,11 +66,34 @@ function filteredPublications(){
   if(!q) return items;
   return items.filter(p=>[p.authors,p.title,p.venue,p.year,p.doi].join(' ').toLowerCase().includes(q));
 }
-function renderPublications(){
-  const items=filteredPublications();
-  const grid=$('#publicationGrid');
-  if(!items.length){grid.innerHTML='<article class="card publication-card fade-in visible"><p>No publications found.</p></article>';return;}
-  grid.innerHTML=items.map((p,i)=>`<article class="card publication-card fade-in visible"><div class="pub-number">${i+1}</div><div class="pub-content"><p class="authors">${escapeHTML(p.authors)}</p><h3>${escapeHTML(p.title)}</h3><p class="venue">${escapeHTML(p.venue)} ${p.year?`• ${escapeHTML(p.year)}`:''}</p><div class="pub-actions">${p.doi&&p.doi!=='#'?`<a class="doi-link" href="${escapeHTML(p.doi)}" target="_blank" rel="noopener"><i class="fa-solid fa-arrow-up-right-from-square"></i> DOI</a>`:'<span class="tag">DOI not listed</span>'}<button class="btn btn-outline btn-small admin-only" onclick="openPublicationModal('${p.id}')"><i class="fa-solid fa-pen"></i> Edit</button><button class="btn btn-danger btn-small admin-only" onclick="deletePublication('${p.id}')"><i class="fa-solid fa-trash"></i> Delete</button></div></div></article>`).join('');
+function renderPublications() {
+  const items = [...(state.data.publications[state.activeTab] || [])]
+    .sort((a, b) => Number(b.year) - Number(a.year));
+
+  if (!items.length) {
+    publicationGrid.innerHTML = `
+      <article class="card publication-card fade-in visible">
+        <p>No publications found in this category.</p>
+      </article>
+    `;
+    return;
+  }
+
+  publicationGrid.innerHTML = items.map((pub, index) => `
+    <article class="card publication-card fade-in visible">
+      <div class="pub-number">${index + 1}</div>
+      <div class="pub-content">
+        <p class="authors">${escapeHTML(pub.authors)}</p>
+        <h3>${escapeHTML(pub.title)}</h3>
+        <p class="venue">${escapeHTML(pub.venue)} ${pub.year ? `• ${escapeHTML(pub.year)}` : ''}</p>
+        <div class="pub-actions">
+          ${pub.doi && pub.doi !== '#' ? `<a class="doi-link" href="${escapeHTML(pub.doi)}" target="_blank" rel="noopener"><i class="fa-solid fa-arrow-up-right-from-square"></i> DOI</a>` : `<span class="tag">DOI pending</span>`}
+          <button class="btn btn-outline btn-small admin-only" onclick="openPublicationModal('${pub.id}')"><i class="fa-solid fa-pen"></i> Edit</button>
+          <button class="btn btn-danger btn-small admin-only" onclick="deletePublication('${pub.id}')"><i class="fa-solid fa-trash"></i> Delete</button>
+        </div>
+      </div>
+    </article>
+  `).join('');
 }
 function renderAwards(){ $('#awardsTimeline').innerHTML=state.data.awards.map(x=>`<article class="card timeline-item fade-in visible"><div class="timeline-date">${escapeHTML(x.date)}</div><h3>${escapeHTML(x.title)}</h3><p>${escapeHTML(x.description)}</p><div class="admin-actions admin-only"><button class="btn btn-outline btn-small" onclick="openAwardModal('${x.id}')"><i class="fa-solid fa-pen"></i> Edit</button><button class="btn btn-danger btn-small" onclick="deleteAward('${x.id}')"><i class="fa-solid fa-trash"></i> Delete</button></div></article>`).join(''); }
 function renderExperience(){ $('#experienceTimeline').innerHTML=state.data.experience.map(x=>`<article class="card timeline-item fade-in visible"><div class="timeline-date">${escapeHTML(x.date)}</div><h3>${escapeHTML(x.title)}</h3><p><strong>${escapeHTML(x.organization)}</strong></p><p>${escapeHTML(x.description)}</p><div class="admin-actions admin-only"><button class="btn btn-outline btn-small" onclick="openExperienceModal('${x.id}')"><i class="fa-solid fa-pen"></i> Edit</button><button class="btn btn-danger btn-small" onclick="deleteExperience('${x.id}')"><i class="fa-solid fa-trash"></i> Delete</button></div></article>`).join(''); }
